@@ -112,7 +112,7 @@ snippet:
 Make sure to /remove any other theme/ that is being loaded, otherwise you
 might run into unexpected issues (you can also =M-x disable-theme=).
 
-*** Load depending on the time of the day
+*** Load at a given time or at sunset/sunrise
     :PROPERTIES:
     :CUSTOM_ID: h:4e936e31-e9eb-4b50-8fdd-45d827a03cca
     :END:
@@ -124,16 +124,39 @@ themes when the time comes.
 #+begin_src emacs-lisp
 ;; Light for the day
 (load-theme 'modus-operandi t t)
-(run-at-time "05:00" (* 60 60 24) (lambda () (enable-theme 'modus-operandi)))
+(run-at-time "05:00" (* 60 60 24)
+             (lambda () (enable-theme 'modus-operandi)))
 
 ;; Dark for the night
 (load-theme 'modus-vivendi t t)
-(run-at-time "21:00" (* 60 60 24) (lambda () (enable-theme 'modus-vivendi)))
+(run-at-time "21:00" (* 60 60 24)
+             (lambda () (enable-theme 'modus-vivendi)))
 #+end_src
 
-Note that the =load-theme= here is slightly different than the one in the
-section right above, because it does not enable the theme directly (the
-subsequent =enable-theme= does that when needed).
+A modified version of the above technique was contributed by [[https://gitlab.com/aadcg][André
+Alexandre Gomes]].  If you set =calendar-latitude= and =calendar-longitude=
+(defined in the built-in =solar.el= library) in your =init.el=, you can
+automatically switch between both themes at sunrise and sunset.  Note
+that /those calendar variables need to be set before loading the themes/.
+
+#+begin_src emacs-lisp
+;; Light at sunrise
+(load-theme 'modus-operandi t t)
+(run-at-time (nth 1 (split-string (sunrise-sunset)))
+             (* 60 60 24)
+             (lambda () (enable-theme 'modus-operandi)))
+
+;; Dark at sunset
+(load-theme 'modus-vivendi t t)
+(run-at-time (nth 4 (split-string (sunrise-sunset)))
+             (* 60 60 24)
+             (lambda () (enable-theme 'modus-vivendi)))
+#+end_src
+
+For the sake of completeness, the =load-theme= call in these snippets is
+slightly different than the one in the section right above, because it
+does not enable the theme directly: the subsequent =enable-theme= does
+that when needed.
 
 * Customisation options
   :PROPERTIES:
@@ -481,6 +504,56 @@ Example:
         ("magenta-alt-other" . "#bbaaff")))
 #+end_src
 
+You can then use this as a basis for creating a spin-off theme, such as
+what [[https://gitlab.com/protesilaos/modus-themes/-/issues/45][Vincent Foley did in issue 45]].  The customisations were used to
+emulate the aesthetic of Vincent's [[https://github.com/gnuvince/purp][purp theme]].
+
+Excerpt of what was used in issue 45:
+
+#+begin_src emacs-lisp
+(use-package modus-operandi-theme
+  :ensure t
+  :config
+  (defun customize-modus-operandi ()
+    (when (member 'modus-operandi custom-enabled-themes)
+      (setq modus-operandi-theme-override-colors-alist
+            '(("magenta" . "#ff00ff"))) ; Redefine the value of the `magenta' variable
+      (modus-operandi-theme-with-color-variables
+        (custom-theme-set-faces
+         'modus-operandi
+         `(font-lock-builtin-face              ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-comment-delimiter-face    ((t (:background ,bg-main :foreground ,green))))
+         `(font-lock-comment-face              ((t (:background ,bg-main :foreground ,green))))
+         `(font-lock-constant-face             ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-doc-face                  ((t (:background ,bg-main :foreground ,green))))
+         `(font-lock-function-name-face        ((t (:background ,bg-main :foreground ,magenta)))) ; gets the value from the above alist
+         `(font-lock-keyword-face              ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-negation-char-face        ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-preprocessor-face         ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-regexp-grouping-backslash ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-regexp-grouping-construct ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-string-face               ((t (:background ,bg-main :foreground ,yellow))))
+         `(font-lock-type-face                 ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-variable-name-face        ((t (:background ,bg-main :foreground ,fg-main))))
+         `(font-lock-warning-face              ((t (:weight bold :background ,bg-main :foreground ,red))))
+         ))))
+  (add-hook 'after-load-theme-hook 'customize-modus-operandi))
+#+end_src
+
+The code for the bespoke =after-load-theme-hook= could be something like
+the following (courtesy of the [[https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-funcs.el][Centaur Emacs project]]):
+
+#+begin_src emacs-lisp
+(defvar after-load-theme-hook nil
+  "Hook run after a color theme is loaded using `load-theme'.")
+
+(defun run-after-load-theme-hook (&rest _)
+  "Run `after-load-theme-hook'."
+  (run-hooks 'after-load-theme-hook))
+
+(advice-add #'load-theme :after #'run-after-load-theme-hook)
+#+end_src
+
 *** Option 2 to apply colour variables to faces
     :PROPERTIES:
     :CUSTOM_ID: h:9754abfd-c890-4af3-91a8-1a2cb2b5be44
@@ -503,24 +576,38 @@ Len's sample package declaration (with comments by me):
 
 #+begin_src emacs-lisp
 (use-package modus-vivendi-theme
-  :init                                 ; enable some of the customisation options before loading the theme
+  :init
+  ;; enable some of the customisation options before loading the theme
   (setq modus-vivendi-theme-visible-fringe t
         modus-vivendi-theme-3d-modeline t)
   :config
-  (defun customize-modus-vivendi ()     ; function that passes further customisations to the theme
+  (defun customize-modus-vivendi ()
     "Customize modus-vivendi theme"
     (if (member 'modus-vivendi custom-enabled-themes)
-        (modus-vivendi-theme-with-color-variables ; this macro allows us to access the colour palette
+        ;; this macro allows us to access the colour palette
+        (modus-vivendi-theme-with-color-variables
          (custom-theme-set-faces
           'modus-vivendi
-          `(magit-branch-current ((((supports :box t)) (:foreground ,blue-alt-other :background ,bg-alt :box t)) ; use a box property if possible and also apply a background
-                                  (t (:foreground ,blue-alt-other :background ,bg-alt :underline t)))) ; use an underline if the box is not available
-          `(magit-branch-remote-head ((((supports :box t)) (:foreground ,magenta-alt-other :background ,bg-alt :box t))
-                                      (t (:foreground ,magenta-alt-other :background ,bg-alt :underline t))))
-
+          `(magit-branch-current
+            ((;; use a box property if the current display terminal
+              ;; supports it and also apply a background
+              ((supports :box t))
+              (:foreground ,blue-alt-other :background ,bg-alt :box t))
+             (t
+              ;; use an underline if instead of a box for other
+              ;; terminals
+              (:foreground ,blue-alt-other :background ,bg-alt :underline t))))
+          `(magit-branch-remote-head
+            ((((supports :box t))
+              (:foreground ,magenta-alt-other :background ,bg-alt :box t))
+             (t
+              (:foreground ,magenta-alt-other :background ,bg-alt :underline t))))
           ))))
-  (add-hook 'after-load-theme-hook 'customize-modus-vivendi) ; invoke the above function when appropriate in order to override the styles of the desired faces
-  (load-theme 'modus-vivendi t))                             ; load the theme
+  ;; invoke the above function when appropriate in order to override the
+  ;; styles of the desired faces
+  (add-hook 'after-load-theme-hook 'customize-modus-vivendi)
+  ;; load the theme
+  (load-theme 'modus-vivendi t))
 #+end_src
 
 Perhaps you want something simpler, such as a nice style for the cursor:
@@ -534,22 +621,11 @@ Perhaps you want something simpler, such as a nice style for the cursor:
 (modus-vivendi-theme-with-color-variables
   (custom-theme-set-faces
    'modus-vivendi
-   `(cursor ((t (:background ,red-alt))))))
+   `(cursor ((t (:background ,green-alt))))))
 #+end_src
 
-The code for the bespoke =after-load-theme-hook= could be something like
-the following (courtesy of the [[https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-funcs.el][Centaur Emacs project]]):
-
-#+begin_src emacs-lisp
-(defvar after-load-theme-hook nil
-  "Hook run after a color theme is loaded using `load-theme'.")
-
-(defun run-after-load-theme-hook (&rest _)
-  "Run `after-load-theme-hook'."
-  (run-hooks 'after-load-theme-hook))
-
-(advice-add #'load-theme :after #'run-after-load-theme-hook)
-#+end_src
+Remember that the =after-load-theme-hook= is not built into Emacs.  The
+code for it was shown under heading [[#h:149e23b6-ada1-480f-95cd-c56fb40999b5][Option 1 to redefine colour values]].
 
 If you need more ideas check how I configure the themes in [[https://gitlab.com/protesilaos/dotemacs][my dotemacs]].
 If something is not clear or not working as intended, please let me
@@ -793,6 +869,7 @@ the "full support" may not be 100% true…
 + markup-faces (=adoc-mode=)
 + mentor
 + messages
++ minibuffer-line
 + minimap
 + modeline
 + mood-line
