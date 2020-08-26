@@ -1,11 +1,19 @@
 #+TITLE: Modus Themes for GNU Emacs
 #+AUTHOR: Protesilaos Stavrou
 #+EMAIL: public@protesilaos.com
+#+OPTIONS: toc:nil
+
++ README HTML version on my website :: [[https://protesilaos.com/modus-themes][https://protesilaos.com/modus-themes]]
++ Git repo :: [[https://gitlab.com/protesilaos/modus-themes/][https://gitlab.com/protesilaos/modus-themes/]]
+
+-----
+
+#+TOC: headlines 8 insert TOC here, with eight headline levels
 
 * Overview
-  :PROPERTIES:
-  :CUSTOM_ID: h:d42d56a4-9252-4858-ac8e-3306cdd24e19
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:d42d56a4-9252-4858-ac8e-3306cdd24e19
+:END:
 
 This is a set of accessible themes for GNU Emacs.  The contrast ratio
 between foreground and background values should always be >= 7:1, which
@@ -21,9 +29,9 @@ different than their default austere aesthetic.  Make sure to read the
 section on the [[#h:d414ca47-6dce-4905-9f2e-de1465bf23bb][customisation options]].
 
 ** Links with demo content
-   :PROPERTIES:
-   :CUSTOM_ID: h:3b1b8ad9-f08f-4329-b9ee-d817b610708f
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:3b1b8ad9-f08f-4329-b9ee-d817b610708f
+:END:
 
 Check the [[https://gitlab.com/protesilaos/modus-themes/wikis/Screenshots][Wiki page with the screen shots]].  There are lots of scenaria
 on display that draw attention to details and important aspects in the
@@ -34,14 +42,14 @@ Also note that I use these themes in [[https://protesilaos.com/code-casts][my Em
 (although older videos contain earlier, "alpha" versions).
 
 * Install and auto-load
-  :PROPERTIES:
-  :CUSTOM_ID: h:25c3ecd3-8025-414c-9b96-e4d6266c6fe8
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:25c3ecd3-8025-414c-9b96-e4d6266c6fe8
+:END:
 
 ** Install the packages
-   :PROPERTIES:
-   :CUSTOM_ID: h:c3e293e8-8464-4196-aefd-184027116ded
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:c3e293e8-8464-4196-aefd-184027116ded
+:END:
 
 I maintain /Modus Operandi/ (light theme) and /Modus Vivendi/ (dark) as
 standalone packages in Emacs-specific archives: GNU ELPA, MELPA, and
@@ -72,9 +80,9 @@ To be clear, that sequence means:
 available.
 
 *** With the "use-package" configuration manager
-    :PROPERTIES:
-    :CUSTOM_ID: h:3ab0ac39-38fb-405b-8a15-771cbd843b6d
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:3ab0ac39-38fb-405b-8a15-771cbd843b6d
+:END:
 
 For a declarative approach with =use-package= and the built-in =package.el=,
 you can write something like this (also see [[#h:d414ca47-6dce-4905-9f2e-de1465bf23bb][the customisation options]]
@@ -87,22 +95,22 @@ for how to expand these package declarations):
 #+END_SRC
 
 *** GNU/Linux distro packages
-    :PROPERTIES:
-    :CUSTOM_ID: h:f696763b-5db1-4717-a90a-964e127d1a73
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:f696763b-5db1-4717-a90a-964e127d1a73
+:END:
 
 The themes are also available from the archives of some GNU/Linux
 distributions.  These should correspond to a tagged release rather than
 building directly from the latest Git commit.  It all depends on the
 distro's packaging policies.
 
-/Note for package maintainers:/ Feel free to [[#h:f696763b-5db1-4717-a90a-964e127d1a73][contact me]] for any questions
+/Note for package maintainers:/ Feel free to [[https://protesilaos.com/contact/][contact me]] for any questions
 you may have and/or to update this section.
 
 **** Debian ("Sid" or "Unstable")
-     :PROPERTIES:
-     :CUSTOM_ID: h:a3d891ff-3dc3-4455-a482-b251e59bb21a
-     :END:
+:PROPERTIES:
+:CUSTOM_ID: h:a3d891ff-3dc3-4455-a482-b251e59bb21a
+:END:
 
 The two themes are distributed as [[https://packages.debian.org/sid/elpa-modus-themes][a single package for Debian]] and its
 derivatives.  Currently in the unstable suite and should be available in
@@ -118,9 +126,9 @@ Special thanks to package maintainer Dhavan Vaidya and the rest of the
 Debian Emacsen team!
 
 **** GNU Guix
-     :PROPERTIES:
-     :CUSTOM_ID: h:fea43d19-b307-46d7-81ab-d0e77e9cbede
-     :END:
+:PROPERTIES:
+:CUSTOM_ID: h:fea43d19-b307-46d7-81ab-d0e77e9cbede
+:END:
 
 Users of either GuixSD (the distro) or just Guix (the package manager)
 can get each theme as a standalone package.
@@ -139,9 +147,9 @@ I do not know who the package maintainer is, but I wish to thank you
 regardless!
 
 *** Manual installation method
-    :PROPERTIES:
-    :CUSTOM_ID: h:0317c29a-3ddb-4a0a-8ffd-16c781733ea2
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:0317c29a-3ddb-4a0a-8ffd-16c781733ea2
+:END:
 
 Download the files in this repository ending in =*-theme.el= and place
 them in an appropriate directory, such as =~/.emacs.d/themes/=.  To make
@@ -153,9 +161,9 @@ following in your initialisation file:
 #+END_SRC
 
 ** Load automatically
-   :PROPERTIES:
-   :CUSTOM_ID: h:ae978e05-526f-4509-a007-44a0925b8bce
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:ae978e05-526f-4509-a007-44a0925b8bce
+:END:
 
 To load the theme from your Emacs initialisation file use the relevant
 snippet:
@@ -169,9 +177,9 @@ Make sure to /remove any other theme/ that is being loaded, otherwise you
 might run into unexpected issues (you can also =M-x disable-theme=).
 
 *** Load at a given time or at sunset/sunrise
-    :PROPERTIES:
-    :CUSTOM_ID: h:4e936e31-e9eb-4b50-8fdd-45d827a03cca
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:4e936e31-e9eb-4b50-8fdd-45d827a03cca
+:END:
 
 This is a neat trick contributed by [[https://www.reddit.com/r/emacs/comments/gdtqov/weekly_tipstricketc_thread/fq9186h/][b3n on r/emacs]].  It will select the
 appropriate theme based on the time of the day and it will also switch
@@ -215,9 +223,9 @@ does not enable the theme directly: the subsequent =enable-theme= does
 that when needed.
 
 * Customisation options
-  :PROPERTIES:
-  :CUSTOM_ID: h:d414ca47-6dce-4905-9f2e-de1465bf23bb
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:d414ca47-6dce-4905-9f2e-de1465bf23bb
+:END:
 
 Both of the Modus themes expose variables that allow users to tweak how
 certain styles are configured.  Check the [[https://gitlab.com/protesilaos/modus-themes/wikis/Screenshots][Wiki with the screen shots]] to
@@ -250,9 +258,9 @@ Consult the section below with the [[#h:0e3b8a62-8d72-4439-be2d-cb12ed98f4cb][co
 fully fledged =use-package= declaration.
 
 ** Option for "greyscale" or "rainbow" Org blocks
-   :PROPERTIES:
-   :CUSTOM_ID: h:ca57a3af-6f79-4530-88c0-e35eda9d3bf7
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:ca57a3af-6f79-4530-88c0-e35eda9d3bf7
+:END:
 
 Symbol names:
 
@@ -286,9 +294,9 @@ major-mode so that the colours are applied properly: =M-x org-mode= to
 refresh the buffer.  Or start typing in each code block.
 
 ** Option for colourful "rainbow" headings
-   :PROPERTIES:
-   :CUSTOM_ID: h:1be42afb-bcd2-4425-b956-0ba93eb960c2
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:1be42afb-bcd2-4425-b956-0ba93eb960c2
+:END:
 
 Symbol names:
 
@@ -312,9 +320,9 @@ bold typography and the nuances between the various heading levels
 provide the elements of differentiation.
 
 ** Option for sectioned headings
-   :PROPERTIES:
-   :CUSTOM_ID: h:c1c9a380-7a05-4c0d-b714-2acac88f10ad
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:c1c9a380-7a05-4c0d-b714-2acac88f10ad
+:END:
 
 Symbol names:
 
@@ -345,9 +353,9 @@ text, use this:
 #+end_src
 
 ** Option for scaled headings
-   :PROPERTIES:
-   :CUSTOM_ID: h:db0275ea-11c2-47c9-82a9-10b65d8df0f8
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:db0275ea-11c2-47c9-82a9-10b65d8df0f8
+:END:
 
 Symbol names:
 
@@ -398,32 +406,34 @@ not of keywords that are added to it, like "TODO".  This is outside the
 control of the themes and I am not aware of any way to make such
 keywords scale accordingly (see [[*Font configurations for Org (and others)][issue 37]]).
 
-** Option for visible fringes
-   :PROPERTIES:
-   :CUSTOM_ID: h:d989f116-7559-40bc-bf94-ef508d480960
-   :END:
+** Option for "subtle" or "intense" fringe visibility
+:PROPERTIES:
+:CUSTOM_ID: h:d989f116-7559-40bc-bf94-ef508d480960
+:END:
 
 Symbol names:
 
-+ =modus-operandi-theme-visible-fringe=
-+ =modus-vivendi-theme-visible-fringe=
++ =modus-operandi-theme-fringes=
++ =modus-vivendi-theme-fringes=
 
 Possible values:
 
 1. =nil= (default)
-2. =t=
+2. =subtle=
+3. =intense=
 
-When enabled, this will render the fringes in a subtle background
-colour.
+The "subtle" symbol will apply a greyscale background that is visible,
+yet close enough to the main background colour.  While the "intense"
+symbol will use a more noticeable greyscale background.
 
 The default is to use the same colour as that of the main background,
 meaning that the fringes are not obvious though they still occupy the
-space given to them by =fringe-mode= (8px on either side by default).
+space given to them by =fringe-mode= (8 pixels on either side by default).
 
 ** Option for more slanted constructs
-   :PROPERTIES:
-   :CUSTOM_ID: h:cb327797-b303-47c5-8171-4587a911ccc2
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:cb327797-b303-47c5-8171-4587a911ccc2
+:END:
 
 Symbol names:
 
@@ -441,9 +451,9 @@ affects documentation strings and code comments.
 The default is to not use italics unless it is absolutely necessary.
 
 ** Option for more bold constructs
-   :PROPERTIES:
-   :CUSTOM_ID: h:9a77e814-5eca-488f-9a67-119a95c2d28a
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:9a77e814-5eca-488f-9a67-119a95c2d28a
+:END:
 
 Symbol names:
 
@@ -471,9 +481,9 @@ it throughout the theme:
 #+end_src
 
 ** Option for three-dimensional focused mode line
-   :PROPERTIES:
-   :CUSTOM_ID: h:ce155208-fdd6-4ada-9e0c-54aab7e2aff8
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:ce155208-fdd6-4ada-9e0c-54aab7e2aff8
+:END:
 
 Symbol names:
 
@@ -495,9 +505,9 @@ around them and with the active one having more intense colours than any
 inactive ones.
 
 ** Option for subtle diffs
-   :PROPERTIES:
-   :CUSTOM_ID: h:e3933a53-cbd9-4e44-958a-1d6d133f0816
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:e3933a53-cbd9-4e44-958a-1d6d133f0816
+:END:
 
 Symbol names:
 
@@ -522,9 +532,9 @@ which is, nonetheless, more subtle with this option than with its
 default equivalent.
 
 ** Option for faint code syntax highlighting
-   :PROPERTIES:
-   :CUSTOM_ID: h:9f05eef0-9d0d-4305-98a1-c4e49f41e1c8
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:9f05eef0-9d0d-4305-98a1-c4e49f41e1c8
+:END:
 
 Symbol names:
 
@@ -550,9 +560,9 @@ this list):
 + [[https://github.com/tarsius/paren-face][paren-face]]
 
 ** Option for intense line highlight (hl-line-mode)
-   :PROPERTIES:
-   :CUSTOM_ID: h:e19092a4-7204-40d3-ac35-3644b72de937
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:e19092a4-7204-40d3-ac35-3644b72de937
+:END:
 
 Symbol names:
 
@@ -587,38 +597,75 @@ delimiters).  This affects tools such as the built-in =show-paren-mode= as
 well as the =smartparens= package.  The default is to use a subtle warm
 colour for the background of those overlays.
 
-** Option for intense standard completions
-   :PROPERTIES:
-   :CUSTOM_ID: h:5b0b1e66-8287-4f3f-ba14-011c29320a3f
-   :END:
+** Option for "subtle" or "intense" prompts
+:PROPERTIES:
+:CUSTOM_ID: h:53b947f7-c713-4ac2-97f7-9be44a41a67a
+:END:
 
 Symbol names:
 
-+ =modus-operandi-theme-intense-standard-completions=
-+ =modus-vivendi-theme-intense-standard-completions=
++ =modus-operandi-theme-prompts=
++ =modus-vivendi-theme-prompts=
 
 Possible values:
 
 1. =nil= (default)
-2. =t=
+2. =subtle=
+3. =intense=
 
-Display faces for built-in completion frameworks, such as =icomplete=,
-with a combination of background and foreground colours.  This covers
-every completion interface that either is part of the upstream Emacs
-distribution or extends some built-in library.  For example, =orderless=
-is a powerful completion style that can be used with core Emacs.  So it
-also is covered by this customisation option.
+The symbols "subtle" and "intense" will apply a combination of accented
+background and foreground to the minibuffer and other REPL prompts (like
+=M-x shell=).  The difference between the two is that the latter has a
+more pronounced/noticeable effect than the former.
 
-With this enabled, Icomplete and others will use similar UI metaphors to
-those of =ivy=, =helm=, =selectrum= (among others).
+The default is to not use any background for such prompts, while only
+relying on an accented foreground colour.
 
-The default is to only use foreground colour values for the various
-matching characters or items of standard completion tools.
+** Option for "moderate" or "opinionated" completion UIs
+:PROPERTIES:
+:CUSTOM_ID: h:5b0b1e66-8287-4f3f-ba14-011c29320a3f
+:END:
+
+Symbol names:
+
++ =modus-operandi-theme-completions=
++ =modus-vivendi-theme-completions=
+
+Possible values:
+
+1. =nil= (default)
+2. =moderate=
+3. =opinionated=
+
+This is a special option that has different effects depending on the
+completion UI.  The interfaces can be grouped in two categories: (i)
+those that only or mostly use foreground colours for their interaction
+model, and (ii) those that combine background and foreground values for
+some of their metaphors.  The former category encompasses the built-in
+tools, namely, Icomplete and Ido, as well as packages like Orderless and
+Flx.  The latter covers Ivy, Helm, Selectrum, and similar.
+
+The symbol =moderate= will apply a combination of background and
+foreground that is fairly subtle.  For Icomplete and friends this
+constitutes a departure from their default aesthetics, however the
+difference is small.  While Ivy et al will appear slightly different
+than their original looks, as they are toned down a bit.
+
+The symbol =opinionated= will apply colour combinations that refashion the
+completion UI.  For the Icomplete camp this means that intense
+background and foreground combinations are used: in effect their looks
+emulate those of Ivy and co. in their original style.  Whereas the other
+group of packages will revert to an even more nuanced aesthetic with
+some additional changes to the choice of hues.
+
+To appreciate the scope of this customisation option, you should spend
+some time with every one of the =nil= (default), =moderate=, and =opinionated=
+possibilities.
 
 ** Option for variable-pitch fonts in headings
-   :PROPERTIES:
-   :CUSTOM_ID: h:33023fa6-6482-45d4-9b5e-3c73c945718f
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:33023fa6-6482-45d4-9b5e-3c73c945718f
+:END:
 
 Symbol names:
 
@@ -641,9 +688,9 @@ the main text, while letting inline code and some other space-sensitive
 constructs use a monospaced font).
 
 ** Complete example configuration for the above
-   :PROPERTIES:
-   :CUSTOM_ID: h:0e3b8a62-8d72-4439-be2d-cb12ed98f4cb
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:0e3b8a62-8d72-4439-be2d-cb12ed98f4cb
+:END:
 
 This is a complete =use-package= declaration with Modus Operandi as an
 example.  You can modify it to your preferences.  Here we enable all
@@ -659,14 +706,18 @@ being available.
 (use-package modus-operandi-theme
   :ensure t
   :init
+  ;; NOTE: Everything is disabled by default.
   (setq modus-operandi-theme-slanted-constructs t
         modus-operandi-theme-bold-constructs t
-        modus-operandi-theme-visible-fringes t
+        modus-operandi-theme-fringes 'subtle ; {nil,'subtle,'intense}
         modus-operandi-theme-3d-modeline t
-        modus-operandi-theme-subtle-diffs t
+        modus-operandi-theme-faint-syntax t
         modus-operandi-theme-intense-hl-line t
-        modus-operandi-theme-intense-standard-completions t
-        modus-operandi-theme-org-blocks 'greyscale
+        modus-operandi-theme-intense-paren-match t
+        modus-operandi-theme-prompts 'subtle ; {nil,'subtle,'intense}
+        modus-operandi-theme-completions 'moderate ; {nil,'moderate,'opinionated}
+        modus-operandi-theme-subtle-diffs t
+        modus-operandi-theme-org-blocks 'greyscale ; {nil,'greyscale,'rainbow}
         modus-operandi-theme-variable-pitch-headings t
         modus-operandi-theme-rainbow-headings t
         modus-operandi-theme-section-headings t
@@ -685,9 +736,9 @@ do not try to interpret the values of the variables, as I always test
 different combinations and scenaria).
 
 ** Full access to the palette for further tweaks (advanced)
-   :PROPERTIES:
-   :CUSTOM_ID: h:b7282635-4fe9-415a-abdf-962b736ff5b6
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:b7282635-4fe9-415a-abdf-962b736ff5b6
+:END:
 
 Unlike the previous options which follow a straightforward pattern of
 allowing the user to quickly select their preference, the themes also
@@ -695,9 +746,9 @@ provide a more powerful, albeit difficult, mechanism of controlling
 things with precision.
 
 *** Option 1 to redefine colour values
-    :PROPERTIES:
-    :CUSTOM_ID: h:149e23b6-ada1-480f-95cd-c56fb40999b5
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:149e23b6-ada1-480f-95cd-c56fb40999b5
+:END:
 
 The variables are:
 
@@ -770,9 +821,9 @@ the following (courtesy of the [[https://github.com/seagle0128/.emacs.d/blob/mas
 #+end_src
 
 *** Option 2 to apply colour variables to faces
-    :PROPERTIES:
-    :CUSTOM_ID: h:9754abfd-c890-4af3-91a8-1a2cb2b5be44
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:9754abfd-c890-4af3-91a8-1a2cb2b5be44
+:END:
 
 The macro symbols are:
 
@@ -801,23 +852,22 @@ Len's sample package declaration (with comments by me):
     (if (member 'modus-vivendi custom-enabled-themes)
         ;; this macro allows us to access the colour palette
         (modus-vivendi-theme-with-color-variables
-         (custom-theme-set-faces
-          'modus-vivendi
-          `(magit-branch-current
-            ((;; use a box property if the current display terminal
-              ;; supports it and also apply a background
-              ((supports :box t))
-              (:foreground ,blue-alt-other :background ,bg-alt :box t))
-             (t
-              ;; use an underline if instead of a box for other
-              ;; terminals
-              (:foreground ,blue-alt-other :background ,bg-alt :underline t))))
-          `(magit-branch-remote-head
-            ((((supports :box t))
-              (:foreground ,magenta-alt-other :background ,bg-alt :box t))
-             (t
-              (:foreground ,magenta-alt-other :background ,bg-alt :underline t))))
-          ))))
+          (custom-theme-set-faces
+           'modus-vivendi
+           `(magit-branch-current
+             ((;; use a box property if the current display terminal
+               ;; supports it and also apply a background
+               ((supports :box t))
+               (:foreground ,blue-alt-other :background ,bg-alt :box t))
+              (t
+               ;; use an underline instead of a box for other terminals
+               (:foreground ,blue-alt-other :background ,bg-alt :underline t))))
+           `(magit-branch-remote-head
+             ((((supports :box t))
+               (:foreground ,magenta-alt-other :background ,bg-alt :box t))
+              (t
+               (:foreground ,magenta-alt-other :background ,bg-alt :underline t))))
+           ))))
   ;; invoke the above function when appropriate in order to override the
   ;; styles of the desired faces
   (add-hook 'after-load-theme-hook 'customize-modus-vivendi)
@@ -847,9 +897,9 @@ If something is not clear or not working as intended, please let me
 know.
 
 *** Further considerations
-    :PROPERTIES:
-    :CUSTOM_ID: h:4acda0f1-564e-48ff-8998-ebf7618377dd
-    :END:
+:PROPERTIES:
+:CUSTOM_ID: h:4acda0f1-564e-48ff-8998-ebf7618377dd
+:END:
 
 Please understand that these customisation methods are meant for
 advanced users or those who are prepared to do their own research.  If
@@ -878,9 +928,9 @@ methods documented in my [[https://protesilaos.com/codelog/2020-05-10-modus-oper
 (2020-05-10).
 
 ** Font configurations for Org (and others)
-   :PROPERTIES:
-   :CUSTOM_ID: h:ea30ff0e-3bb6-4801-baf1-d49169d94cd5
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:ea30ff0e-3bb6-4801-baf1-d49169d94cd5
+:END:
 
 The themes are designed to cope well with mixed font settings.
 Currently this applies to =org-mode= (courtesy of [[https://gitlab.com/protesilaos/modus-themes/-/issues/40][Ben in issue 40]]) and
@@ -926,29 +976,19 @@ check these:
 + [[https://protesilaos.com/codelog/2020-07-16-emacs-focused-editing/][“Focused editing” tools for Emacs]] (2020-07-16)
 + [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][Configuring mixed fonts for Org mode and others]] (2020-07-17)
 
-** Note on settings for rendering of HTML buffers
-   :PROPERTIES:
-   :CUSTOM_ID: h:61875051-b284-40f0-a74d-1574f41b3d42
-   :END:
-
-The rendering mechanism that enables viewing of HTML content in Emacs
-may need some explicit specification depending on your preferences. This
-is demonstrated in [[https://gitlab.com/protesilaos/modus-themes/-/issues/60][issue 60]] particularly with respect to viewing mails
-in mu4e.
-
 * Face coverage
-  :PROPERTIES:
-  :CUSTOM_ID: h:944a3bdf-f545-40a0-a26c-b2cec8b2b316
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:944a3bdf-f545-40a0-a26c-b2cec8b2b316
+:END:
 
 This list will always be updated to reflect the current state of the
 project.  The idea is to offer an overview of the /known status/ of all
 affected face groups.
 
 ** Full support
-   :PROPERTIES:
-   :CUSTOM_ID: h:5ea98392-1376-43a4-8080-2d42a5b690ef
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:5ea98392-1376-43a4-8080-2d42a5b690ef
+:END:
 
 The items with an appended asterisk =*= tend to have lots of extensions, so
 the "full support" may not be 100% true…
@@ -1051,9 +1091,10 @@ the "full support" may not be 100% true…
 + forge
 + fountain (fountain-mode)
 + geiser
-+ git
++ git-commit
 + git-gutter (and variants)
 + git-lens
++ git-rebase
 + git-timemachine
 + git-walktree
 + gnus
@@ -1129,6 +1170,7 @@ the "full support" may not be 100% true…
 + org-recur
 + org-roam
 + org-superstar
++ org-table-sticky-header
 + org-treescope
 + origami
 + outline-mode
@@ -1143,6 +1185,7 @@ the "full support" may not be 100% true…
 + perspective
 + phi-grep
 + phi-search
++ pkgbuild-mode
 + pomidor
 + powerline
 + powerline-evil
@@ -1159,6 +1202,7 @@ the "full support" may not be 100% true…
 + ruler-mode
 + sallet
 + selectrum
++ semantic
 + sesman
 + shell-script-mode
 + show-paren-mode
@@ -1167,6 +1211,7 @@ the "full support" may not be 100% true…
 + smart-mode-line
 + smartparens
 + smerge
++ spaceline
 + speedbar
 + spell-fu
 + stripes
@@ -1177,6 +1222,7 @@ the "full support" may not be 100% true…
 + sx
 + symbol-overlay
 + syslog-mode
++ table (built-in table.el)
 + telephone-line
 + term
 + tomatinho
@@ -1215,21 +1261,21 @@ Plus many other miscellaneous faces that are provided by the upstream
 GNU Emacs distribution.
 
 ** Covered but not styled explicitly
-   :PROPERTIES:
-   :CUSTOM_ID: h:8ada963d-046d-4c67-becf-eee18595f902
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:8ada963d-046d-4c67-becf-eee18595f902
+:END:
 
 These do not require any extra styles because they are configured to
 inherit from some basic faces.  Please confirm.
 
-+ comint
 + edit-indirect
++ php-mode
 + swift-mode
 
 ** Will NOT be supported
-   :PROPERTIES:
-   :CUSTOM_ID: h:46756fcc-0d85-4f77-b0e3-64f890e1c2ea
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:46756fcc-0d85-4f77-b0e3-64f890e1c2ea
+:END:
 
 I have thus far identified a single package that does fit into the
 overarching objective of this project: [[https://github.com/hlissner/emacs-solaire-mode][solaire]].  It basically tries to
@@ -1242,10 +1288,29 @@ effect/: less intense colours (but still accessible) for supportive
 interfaces and the intended styles for the content you are actually
 working on.
 
+** Note for powerline or spaceline users
+:PROPERTIES:
+:CUSTOM_ID: h:a7d956e5-c4fa-4586-bd84-770bf2c16666
+:END:
+
+After making changes to the theme configuration, in order to reset any
+color irregularities in the mode line, both Powerline and Spaceline
+package users can use the command =powerline-reset=.
+
+** Note on colour rendering of HTML buffers
+:PROPERTIES:
+:CUSTOM_ID: h:61875051-b284-40f0-a74d-1574f41b3d42
+:END:
+
+Emacs' HTML rendering mechanism (=shr=) may need explicit configuration to
+respect the theme's colours instead of whatever specifications the
+webpage provides.  Consult =C-h v shr-use-colors=.  This has been
+demonstrated in [[https://gitlab.com/protesilaos/modus-themes/-/issues/60][issue 60]] with respect to viewing mails in mu4e.
+
 ** Note for HELM users of grep or grep-like functions
-   :PROPERTIES:
-   :CUSTOM_ID: h:e4408911-e186-4825-bd4f-4d0ea55cd6d6
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:e4408911-e186-4825-bd4f-4d0ea55cd6d6
+:END:
 
 There is one face from the Helm package that is meant to highlight the
 matches of a grep or grep-like command (=ag= or =ripgrep=).  It is
@@ -1279,9 +1344,9 @@ A similar scenario was [[https://gitlab.com/protesilaos/modus-themes/-/issues/49
 fixed by the Helm maintainer.
 
 ** Note on VC-ANNOTATE-BACKGROUND-MODE
-   :PROPERTIES:
-   :CUSTOM_ID: h:5b5d4420-50cc-4d53-a9f8-825cba6b68f1
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:5b5d4420-50cc-4d53-a9f8-825cba6b68f1
+:END:
 
 Due to the unique way =vc-annotate= (=C-x v g=) applies colours, support for
 its background mode (=vc-annotate-background-mode=) is disabled at the
@@ -1298,9 +1363,9 @@ report as much (or send patches, per the information in the [[#h:25ba8d6f-6604-4
 section).
 
 * Contributing
-  :PROPERTIES:
-  :CUSTOM_ID: h:25ba8d6f-6604-4338-b774-bbe531d467f6
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:25ba8d6f-6604-4338-b774-bbe531d467f6
+:END:
 
 A few tasks you can help me with:
 
@@ -1321,9 +1386,9 @@ necessary between aesthetics and accessibility, it shall always be made
 in the interest of the latter.
 
 ** Code contributions require copyright assignment to the FSF
-   :PROPERTIES:
-   :CUSTOM_ID: h:d3fb2fc7-6c34-4e68-b2d6-6048849b0319
-   :END:
+:PROPERTIES:
+:CUSTOM_ID: h:d3fb2fc7-6c34-4e68-b2d6-6048849b0319
+:END:
 
 I accept code contributions as well (send merge requests!).  But for any
 major contribution (more than 15 lines, or so, in aggregate), you need
@@ -1341,10 +1406,28 @@ happen via email and take about a week.
 I encourage you to go through this process.  You only need to do it
 once.  It will allow you to make contributions to Emacs in general.
 
+* External projects (ports)
+:PROPERTIES:
+:CUSTOM_ID: h:2a473296-2dd4-4575-9991-b89f83ef70aa
+:END:
+
+The present section documents projects that extend the scope of the
+Modus themes.  The following list will be updated whenever relevant
+information is brought to my attention.  If you already have or intend
+to produce such a port, feel welcome [[https://protesilaos.com/contact][to contact me]].
+
++ Modus exporter :: This is [[https://github.com/polaris64/modus-exporter][an Elisp library written by Simon Pugnet]].
+  It is meant to capture the colour values of the active Modus theme
+  (Operandi or Vivendi) and output it as a valid theme for some other
+  application.  As of this writing (2020-08-18), the project supports
+  exporting to a valid yaml format that can be applied to the Alacritty
+  terminal emulator.  Other templates are expected to be made available
+  in the near future.
+
 * Meta
-  :PROPERTIES:
-  :CUSTOM_ID: h:4c338a51-509e-42c0-8820-1f5014fb477b
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:4c338a51-509e-42c0-8820-1f5014fb477b
+:END:
 
 If you are curious about the principles that govern the development of
 this project, read my article [[https://protesilaos.com/codelog/2020-03-17-design-modus-themes-emacs/][On the design of the Modus themes]]
@@ -1359,9 +1442,9 @@ that goes into this project:
 + [[https://protesilaos.com/codelog/2020-07-08-modus-themes-nuanced-colours/][Modus themes: major review of "nuanced" colours]] (2020-07-08)
 
 * COPYING
-  :PROPERTIES:
-  :CUSTOM_ID: h:66652183-2fe0-46cd-b4bb-4121bad78d57
-  :END:
+:PROPERTIES:
+:CUSTOM_ID: h:66652183-2fe0-46cd-b4bb-4121bad78d57
+:END:
 
 The Modus Themes are distributed under the terms of the GNU General
 Public License version 3 or, at your choice, any later version.  See the
