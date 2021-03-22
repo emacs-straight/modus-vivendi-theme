@@ -1,10 +1,10 @@
-;;; modus-vivendi-theme.el --- Accessible light theme (WCAG AAA) -*- lexical-binding:t -*-
+;;; modus-vivendi-theme.el --- Accessible dark theme (WCAG AAA) [DEPRECATED] -*- lexical-binding:t -*-
 
 ;; Copyright (c) 2019-2021  Free Software Foundation, Inc.
 
 ;; Author: Protesilaos Stavrou <info@protesilaos.com>
 ;; URL: https://gitlab.com/protesilaos/modus-themes
-;; Version: 0.13.1
+;; Version: 0.13.2
 ;; Package-Requires: ((emacs "26.1") (modus-themes "1.2.4"))
 ;; Keywords: faces, theme, accessibility
 
@@ -26,7 +26,7 @@
 ;;; Commentary:
 ;;
 ;; This package is obsolete.  It has been replaced by `modus-themes',
-;; which includes the modus-vivendi and modus-vivendi themes.
+;; which includes the modus-operandi and modus-vivendi themes.
 ;;
 ;; Users updating to the new `modus-themes' package, are advised to read
 ;; the anouncement on the emacs-devel mailing list:
@@ -44,7 +44,7 @@
 
 
 
-(require 'modus-themes)
+(if t (require 'modus-themes)) ;; Don't require it during compilation!
 
 (eval-and-compile
   (let ((msg "Package `modus-vivendi-theme' is obsolete; use the new `modus-themes'"))
